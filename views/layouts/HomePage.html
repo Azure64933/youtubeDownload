@@ -13,20 +13,22 @@
 <body>
     <!-- 頂部搜尋工作列(p-2 = padding(2))-->
     <div class="top p-2 bg-light">
+
         <!-- 名稱(fs字型大小)-->
         <p class="fs-4 text-center">請輸入Youtube影片網址</p>
+
         <!-- 輸入網址-->
-        <form class="row justify-content-md-center">
+        <form class="row justify-content-md-center" action="/Loading" method="POST">
             <div class="col-sm-5">
-                <input type="URL" class="form-control" id="YTAddress" placeholder="https://">
+                <input type="URL" class="form-control" id="YTAddress" name="URL" laceholder="https:// ">
             </div>
-            <div class="col-auto">
-                <button type="button" class="btn btn-primary mb-3" onclick="downloadURL()">下載影片</button>
+            <div class="col-auto ">
+                <button type="button " class="btn btn-primary mb-3 ">下載影片</button>
             </div>
         </form>
     </div>
 
-    <p id="p1">Hello World!</p>
+    <p id="p1 ">Hello World!</p>
 
 </body>
 
