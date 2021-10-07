@@ -6,23 +6,30 @@ const multiparty = require('multiparty')
 const main = require('./lib/main')
 const app = express()
 
+// configure Handlebars view engine
+app.engine('handlebars', expressHandlebars({
+    defaultLayout: 'main_HB',
+    helpers: {
+        section: function(name, options) {
+            if (!this._sections) this._sections = {}
+            this._sections[name] = options.fn(this)
+            return null
+        },
+    },
+}))
+app.set('view engine', 'handlebars')
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 const port = process.env.PORT || 3000
 
 
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/views/layouts/HomePage.html');
-    console.log("開啟HTML")
-});
+app.get('/', main.home)
 
 // handlers for browser-based form submission
 app.post('/Loading', main.DownLoading);
 
-app.get('/Loaded', function(req, res) {
-    console.log("Loaded")
-    res.sendFile(__dirname + '/views/Downloaded.html');
-});
+app.get('/Loaded', main.DownLoaded)
 
 
 app.listen(port, () => {
