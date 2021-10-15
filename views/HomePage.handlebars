@@ -1,1 +1,14 @@
-<p> Nothing here</p>
+{{!-- 呼叫Python --}}
+<button type="button" class="btn btn-primary mb-3" onclick="downloadURL()">呼叫Python</button>
+
+<script>
+    function downloadURL() {
+        console.log("Succss call js downloadURL function")
+        $.ajax({
+            type:"post"
+            url: "pytube_example.py",
+        }).done(function (o) {
+            console.log("done ajax")
+        });
+    }
+</script>
